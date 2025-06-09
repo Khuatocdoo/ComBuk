@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:elevation="2dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_marginEnd="16dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/decrementButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="-"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/itemQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="0"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/incrementButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="+"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+{
+  "items": [
+    { "name": "Chicken Rice", "quantity": 50 },
+    { "name": "Pork Chop Rice", "quantity": 40 },
+    { "name": "Broken Rice", "quantity": 30 },
+    { "name": "Vegetarian Rice", "quantity": 20 },
+    { "name": "Fish Rice", "quantity": 25 },
+    { "name": "Beef Rice", "quantity": 35 },
+    { "name": "Shrimp Rice", "quantity": 45 },
+    { "name": "Egg Rice", "quantity": 60 },
+    { "name": "Duck Rice", "quantity": 15 },
+    { "name": "Tofu Rice", "quantity": 10 },
+    { "name": "Fried Rice", "quantity": 70 },
+    { "name": "Seafood Rice", "quantity": 55 },
+    { "name": "Spicy Rice", "quantity": 25 },
+    { "name": "Sweet Rice", "quantity": 20 },
+    { "name": "Curry Rice", "quantity": 30 }
+  ]
+}
