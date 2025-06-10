@@ -13,8 +13,8 @@ class InventoryAdapter(private val items: JSONArray) : RecyclerView.Adapter<Inve
 
     class InventoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemName: TextView = itemView.findViewById(R.id.itemName)
+        val itemPrice: TextView = itemView.findViewById(R.id.itemPrice)
         val itemQuantity: TextView = itemView.findViewById(R.id.itemQuantity)
-        val itemPrice: TextView = itemView.findViewById(R.id.itemPrice) // Reference to item price view
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InventoryViewHolder {
@@ -26,9 +26,9 @@ class InventoryAdapter(private val items: JSONArray) : RecyclerView.Adapter<Inve
         val item: JSONObject = items.getJSONObject(position)
         Log.d("PRICE_DEBUG", "[Inventory] Item: ${item.getString("name")}, price field: ${item.opt("price")}, price used: ${item.optInt("price", 0)}")
         holder.itemName.text = item.getString("name")
-        holder.itemQuantity.text = "Stock: ${item.getInt("quantity")}" // Display stock quantity
         val price = item.optInt("price", 0)
-        holder.itemPrice.text = if (price > 0) "$price₫" else "N/A"
+        holder.itemPrice.text = if (price > 0) "$${price}" else "N/A"
+        holder.itemQuantity.text = "Quantity: ${item.getInt("quantity")}" // Số lượng hiện tại
     }
 
     override fun getItemCount(): Int {
