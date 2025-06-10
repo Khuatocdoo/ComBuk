@@ -12,13 +12,29 @@
     android:elevation="2dp"
     android:backgroundTint="@android:color/darker_gray">
 
-    <TextView
-        android:id="@+id/itemName"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Item Name"
-        android:textSize="16sp" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/itemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item Name"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_marginEnd="16dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/itemQuantity"
@@ -26,15 +42,5 @@
         android:layout_height="wrap_content"
         android:text="Quantity"
         android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/itemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textSize="14sp"
-        android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginEnd="8dp"
-        android:tag="item_price" />
 
 </LinearLayout>
