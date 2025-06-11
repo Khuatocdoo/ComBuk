@@ -65,10 +65,10 @@ class OrderActivity : AppCompatActivity() {
 
     private fun displayItems() {
         val items = databaseManager.getMenuItems()
-        val adapter = OrderAdapter(items) { position, newSelectedQuantity ->
+        val adapter = OrderAdapter(items, onQuantityChange = { position, newSelectedQuantity ->
             selectedQuantities[position] = newSelectedQuantity
             updateStatusBar(items)
-        }
+        })
         orderRecyclerView.adapter = adapter
     }
 

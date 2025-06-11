@@ -12,15 +12,17 @@ class DatabaseManager(private val context: Context) {
     private val ordersFileName = "orders.json"
 
     init {
-        overwriteAssetToFile(menuFileName)
-        overwriteAssetToFile(ordersFileName)
+        copyAssetToFileIfNotExists(menuFileName)
+        copyAssetToFileIfNotExists(ordersFileName)
     }
 
-    private fun overwriteAssetToFile(fileName: String) {
+    private fun copyAssetToFileIfNotExists(fileName: String) {
         val file = File(context.filesDir, fileName)
-        val inputStream = context.assets.open(fileName)
-        val content = inputStream.bufferedReader().use { it.readText() }
-        file.writeText(content)
+        if (!file.exists()) {
+            val inputStream = context.assets.open(fileName)
+            val content = inputStream.bufferedReader().use { it.readText() }
+            file.writeText(content)
+        }
     }
 
     fun getMenuItems(): JSONArray {
@@ -37,7 +39,7 @@ class DatabaseManager(private val context: Context) {
 
     fun addOrder(order: JSONObject) {
         val file = File(context.filesDir, ordersFileName)
-        val json = if (file.exists()) JSONObject(file.readText()) else JSONObject().put("orders", JSONArray())
+        val json = if (file.exists()) JSONObject(file.readText()) else JSONObject().apply { put("orders", JSONArray()) }
         val orders = json.getJSONArray("orders")
         orders.put(order)
         file.writeText(json.toString())
@@ -48,6 +50,12 @@ class DatabaseManager(private val context: Context) {
         val file = File(context.filesDir, menuFileName)
         val json = JSONObject()
         json.put("items", items)
+        file.writeText(json.toString())
+    }
+
+    fun saveOrders(newOrders: JSONArray) {
+        val file = File(context.filesDir, ordersFileName)
+        val json = JSONObject().apply { put("orders", newOrders) }
         file.writeText(json.toString())
     }
 }
