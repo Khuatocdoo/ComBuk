@@ -5,6 +5,33 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <RadioGroup
+        android:id="@+id/priceRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <RadioButton
+            android:id="@+id/radio35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$35" 
+            android:layout_marginHorizontal="15dp"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/radio45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$45" 
+            android:layout_marginHorizontal="15dp"/>
+        <RadioButton
+            android:id="@+id/radio55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$55" 
+            android:layout_marginHorizontal="15dp"/>
+    </RadioGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOrder"
         android:layout_width="match_parent"
