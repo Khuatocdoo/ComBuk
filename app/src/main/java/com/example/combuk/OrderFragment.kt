@@ -122,6 +122,11 @@ class OrderFragment : Fragment() {
                 order.put("items", selectedItems)
                 databaseManager.addOrder(order)
                 Toast.makeText(requireContext(), "Order confirmed!", Toast.LENGTH_SHORT).show()
+                // Reset selections and status bar
+                selectedQuantities.keys.forEach { selectedQuantities[it] = 0 }
+                (recyclerView.adapter as? OrderAdapter)?.selectedQuantities = selectedQuantities
+                updateStatusBar(items)
+                recyclerView.adapter?.notifyDataSetChanged()
             } else {
                 Toast.makeText(requireContext(), "No items selected!", Toast.LENGTH_SHORT).show()
             }
@@ -150,14 +155,18 @@ class OrderFragment : Fragment() {
     // Update the status bar with the total selected items and total price
     private fun updateStatusBar(items: JSONArray) {
         var totalSelectedItems = 0
-        var totalPriceValue = 0
-        for ((position, selected) in selectedQuantities) {
-            val item = items.getJSONObject(position)
-            val price = item.optInt("price", 0)
+        for ((_, selected) in selectedQuantities) {
             totalSelectedItems += selected
-            totalPriceValue += selected * price
         }
         selectedItemCount.text = "Items: $totalSelectedItems"
-        totalPrice.text = "Price: $$totalPriceValue"
+        // Lấy giá trị từ RadioButton
+        val radioGroup = view?.findViewById<RadioGroup>(R.id.priceRadioGroup)
+        val price = when (radioGroup?.checkedRadioButtonId) {
+            R.id.radio35 -> 35
+            R.id.radio45 -> 45
+            R.id.radio55 -> 55
+            else -> 0
+        }
+        totalPrice.text = "Price: $$price"
     }
 }

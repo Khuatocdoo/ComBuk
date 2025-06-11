@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ComBuk</string>
+    <string name="delete_order">Xóa đơn hàng</string>
 </resources>

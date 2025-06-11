@@ -20,16 +20,22 @@ class MainActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
         viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount() = 2
+            override fun getItemCount() = 3
             override fun createFragment(position: Int): Fragment =
                 when (position) {
                     0 -> OrderFragment()
                     1 -> InventoryFragment()
+                    2 -> OrdersListFragment()
                     else -> throw IllegalArgumentException()
                 }
         }
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = if (position == 0) "Order" else "Inventory"
+            tab.text = when (position) {
+                0 -> "Order"
+                1 -> "Inventory"
+                2 -> "Orders List"
+                else -> ""
+            }
         }.attach()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tabLayout)) { v, insets ->

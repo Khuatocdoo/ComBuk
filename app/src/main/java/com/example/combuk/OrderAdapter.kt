@@ -15,7 +15,6 @@ class OrderAdapter(private val items: JSONArray, private val onQuantityChange: (
     class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemName: TextView = itemView.findViewById(R.id.itemName)
         val itemQuantity: TextView = itemView.findViewById(R.id.itemQuantity)
-        val itemPrice: TextView = itemView.findViewById(R.id.itemPrice) // Reference to the price TextView
         val incrementButton: Button = itemView.findViewById(R.id.incrementButton)
         val decrementButton: Button = itemView.findViewById(R.id.decrementButton)
     }
@@ -35,8 +34,6 @@ class OrderAdapter(private val items: JSONArray, private val onQuantityChange: (
         val initialQuantity = item.getInt("quantity")
         val selected = selectedQuantities[position] ?: 0
         holder.itemQuantity.text = selected.toString()
-        val price = item.optInt("price", 0)
-        holder.itemPrice.text = if (price > 0) "$${price}" else "N/A"
 
         // Highlight if selected
         if (selected > 0) {
